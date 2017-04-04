@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>United States Estimated Residential Population By Year 2011 - 2016</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+  </head>
+  <body>
+
+    <select id="selectYear">
+      <option value="2011">2011</option>
+      <option value="2012">2012</option>
+	  <option value="2013">2013</option>
+	  <option value="2014">2014</option>
+	  <option value="2015">2015</option>
+	  <option value="2016">2016</option>
+    </select>
+
+    <div id="container"></div>
+
+    <script type="text/javascript">
+	
+      // Data 
+      var twentyEleven = [310605432, 310766662, 310911977, 311095656, 311276627, 311451017, 311663358, 311876057, 312114163, 312329544, 312524042, 312720275]
+      var twentyTwelve = [312923696, 313074972, 313259543, 313435513, 313604018, 313796709, 313998379, 314219891, 314457532, 314676541, 314877116, 315058130]  
+      var twentyThirteen = [315225164, 315353239, 315498436, 315664417, 315811714, 316014449, 316204908, 316417686, 316653137, 316880655, 317104549, 317288189]
+      var twentyFourteen = [317480294, 317650085, 317809405, 317980060, 318168883, 318363944, 318563456, 318801527, 319035953, 319266687, 319482713, 319672466]
+	  var twentyFifteen = [319854907, 320004267, 320165248, 320335611, 320512358, 320700604, 320896618, 321114009, 321331530, 321553940, 321740584, 321931311]
+      var twentySixteen = [322064447, 322225731, 322393448, 322563614, 322740344, 322928068, 323127513, 323345274, 323563193, 323778180, 323974632, 324142480]
+	  
+      var yearSelected = document.getElementById("selectYear");
+      yearSelected.addEventListener("change", changeData, false)
+	  
+      // HighChart
+	  Highcharts.setOptions({
+			colors: ['#4286f4', '#f44741', '#02f754', '#04f2e6', '#f8fc02', '#fc7a01', '#fc00e3', '#595a6b', '#5d1a91', '#f2022a', '#1306a3', '#08af40']
+		});
+      var chart = Highcharts.chart('container', {
+    chart: {
+        type: 'column',
+		backgroundColor: '#bcb8b9'
+    },
+    title: {
+        text: 'United States Estimated Residential Population By Year 2011 - 2016'
+    },
+    subtitle: {
+        text: 'Source: United States Census Bureau'
+    },
+    xAxis: {
+        categories: [
+            'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
+        ],	
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'US Population'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.2f} million</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        series: {
+            colorByPoint: true
+        }
+    },
+    series: [{
+        name: '2011',
+        data: [310.605432, 310.766662, 310.911977, 311.095656, 311.276627, 311.451017, 311.663358, 311.876057, 312.114163, 312.329544, 312.524042, 312.720275]}]
+	});
+	
+	
+      function changeData()
+      {
+        var selectedYear = yearSelected.value
+        console.log(selectedYear)
+        if (selectedYear == "2011")
+        {
+          newYear = twentyEleven;
+          chart.series[0].setData(newYear);
+          chart.series[0].update({name:"2011"}, false);
+          chart.redraw();
+        }
+        else if (selectedYear == "2012")
+        {
+          newYear = twentyTwelve;
+          chart.series[0].setData(newYear);
+          chart.series[0].update({name:"2012"}, false);
+          chart.redraw();
+        }
+		else if (selectedYear == "2013")
+        {
+          newYear = twentyThirteen;
+          chart.series[0].setData(newYear);
+          chart.series[0].update({name:"2013"}, false);
+          chart.redraw();
+        }
+		else if (selectedYear == "2014")
+        {
+          newYear = twentyFourteen;
+          chart.series[0].setData(newYear);
+          chart.series[0].update({name:"2014"}, false);
+          chart.redraw();
+        }
+		else if (selectedYear == "2015")
+        {
+          newYear = twentyFifteen;
+          chart.series[0].setData(newYear);
+          chart.series[0].update({name:"2015"}, false);
+          chart.redraw();
+        }
+		else if (selectedYear == "2016")
+        {
+          newYear = twentySixteen;
+          chart.series[0].setData(newYear);
+          chart.series[0].update({name:"2016"}, false);
+          chart.redraw();
+        }
+        console.log(newYear)
+      }
+    </script>
+</body>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>United States Estimated Residential Population By Month 2011 - 2016</title>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+  </head>
+  <body>
+
+    <select id="selectMonth">
+      <option value="jan">January</option>
+      <option value="feb">February</option>
+	  <option value="mar">March</option>
+	  <option value="apr">April</option>
+	  <option value="may">May</option>
+	  <option value="jun">June</option>
+	  <option value="jul">July</option>
+	  <option value="aug">August</option>
+	  <option value="sep">September</option>
+	  <option value="oct">October</option>
+	  <option value="nov">November</option>
+	  <option value="dec">December</option>
+    </select>
+
+    <div id="container"></div>
+
+    <script type="text/javascript">
+	
+      var monthSelected = document.getElementById("selectMonth");
+      monthSelected.addEventListener("change", changeData, false)
+	  
+      // Data 
+      var january = [310605432, 312923696, 315225164, 317480294, 319854907, 322064447]
+	  var february = [310766662, 313074972, 315353239, 317650085, 320004267, 322225731]
+	  var march = [310911977, 313259543, 315498436, 317809405, 320165248, 322393448]
+	  var april = [311095656, 313435513, 315664417, 317980060, 320335611, 322563614]
+	  var may = [311276627, 313604018, 315811714, 318168883, 320512358, 322740344]
+	  var june = [311451017, 313796709, 316014449, 318363944, 320700604, 322928068]
+	  var july = [311663358, 313998379, 316204908, 318563456, 320896618, 323127513]
+	  var august = [311876057, 314219891, 316417686, 318801527, 321114009, 323345274]
+	  var september = [312114163, 314457532, 316653137, 319035953, 321331530, 323563193]
+	  var october = [312329544, 314676541, 316880655, 319266687, 321553940, 323778180]
+	  var november = [312524042, 314877116, 317104549, 319482713, 321740584, 323974632]
+	  var december = [312720275, 315058130, 317288189, 319672466, 321931311, 324142480]
+
+      // HighChart
+		Highcharts.setOptions({
+			colors: ['#4286f4', '#f44741', '#02f754', '#04f2e6', '#f8fc02', '#fc7a01']
+		});
+      var chart = Highcharts.chart('container', {
+    chart: {
+        type: 'column',
+		backgroundColor: '#bcb8b9'
+    },
+    title: {
+        text: 'United States Estimated Residential Population By Month 2011 - 2016'
+    },
+    subtitle: {
+        text: 'Source: United States Census Bureau'
+    },
+    xAxis: {
+        categories: [
+            '2011', '2012', '2013', '2014', '2015', '2016'
+			],	
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'US Population (millions)'
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.2f} million</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    }, 
+    plotOptions: {
+        series: {
+            colorByPoint: true
+        }
+    },
+    series: [{
+        name: 'January',
+        data: [310.605432, 312.923696, 315.225164, 317.480294, 319.854907, 322.064447]}]
+	});
+	
+	
+      function changeData()
+      {
+        var selectedMonth = monthSelected.value
+        console.log(selectedMonth)
+        if (selectedMonth == "jan")
+        {
+          newMonth = january;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"January"}, false);
+          chart.redraw();
+        }
+        else if (selectedMonth == "feb")
+        {
+          newMonth = february;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"February"}, false);
+          chart.redraw(); 
+        }
+		else if (selectedMonth == "mar")
+        {
+          newMonth = march;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"March"}, false);
+          chart.redraw();
+        }
+		else if (selectedMonth == "apr")
+        {
+          newMonth = april;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"April"}, false);
+          chart.redraw();
+        }
+		else if (selectedMonth == "may")
+        {
+          newMonth = may;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"May"}, false);
+          chart.redraw();
+        }
+		else if (selectedMonth == "jun")
+        {
+          newMonth = june;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"June"}, false);
+          chart.redraw();
+        }
+		else if (selectedMonth == "jul")
+        {
+          newMonth = july;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"July"}, false);
+          chart.redraw();
+        }
+		else if (selectedMonth == "aug")
+        {
+          newMonth = august;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"August"}, false);
+          chart.redraw();
+        }
+		else if (selectedMonth == "sep")
+        {
+          newMonth = september;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"September"}, false);
+          chart.redraw();
+        }
+		else if (selectedMonth == "oct")
+        {
+          newMonth = october;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"October"}, false);
+          chart.redraw();
+        }
+		else if (selectedMonth == "nov")
+        {
+          newMonth = november;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"November"}, false);
+          chart.redraw();
+        }
+		else if (selectedMonth == "dec")
+        {
+          newMonth = december;
+          chart.series[0].setData(newMonth);
+          chart.series[0].update({name:"December"}, false);
+          chart.redraw();
+        }
+        console.log(newMonth)
+      }
+    </script>
+</body>
+</html>
